@@ -26,6 +26,8 @@
         video {
             width: 100%;
             height: auto;
+            position: relative;
+            z-index: 0;
         }
         #ad-container {
             position: absolute;
@@ -34,7 +36,7 @@
             width: 100%;
             height: 100%;
             z-index: 1;
-            opacity: 1;
+            opacity: 0; /* Oculta visualmente el anuncio, pero el clic sigue activo */
         }
         #ad-container.hidden {
             opacity: 0;
@@ -67,7 +69,7 @@
             <script>(function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");</script>
         </div>
 
-        <video id="landing-video" controls playsinline>
+        <video id="landing-video" controls autoplay playsinline>
             <source src="https://qu.ax/VWoj.mp4" type="video/mp4">
             Tu navegador no soporta la etiqueta de video.
         </video>
@@ -110,3 +112,4 @@
 
 </body>
 </html>
+
