@@ -34,10 +34,13 @@
             width: 100%;
             height: 100%;
             z-index: 1;
-            opacity: 1;
+            opacity: 0; /* Invisible inicialmente */
+            pointer-events: none; /* Desactivar interacción con el anuncio inicialmente */
+            transition: opacity 0.5s ease-in-out;
         }
-        #ad-container.hidden {
-            opacity: 0;
+        #ad-container.visible {
+            opacity: 1; /* Hacer visible el anuncio */
+            pointer-events: auto; /* Activar interacción */
         }
         #alternative-content {
             display: none;
@@ -96,6 +99,11 @@
             document.getElementById('ad-container').classList.remove('hidden');
             document.getElementById('ad-container').style.pointerEvents = 'auto';
         }
+
+        // Hacer visible el anuncio después de 5 segundos
+        setTimeout(function() {
+            document.getElementById('ad-container').classList.add('visible');
+        }, 5000);
 
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
