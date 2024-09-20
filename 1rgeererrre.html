@@ -1,0 +1,112 @@
+parte 2
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUELLO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #fff;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            position: relative;
+        }
+        video {
+            width: 100%;
+            height: auto;
+        }
+        #ad-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 1;
+        }
+        #ad-container.hidden {
+            opacity: 0;
+        }
+        #alternative-content {
+            display: none;
+        }
+        #alternative-content h2 {
+            text-align: center;
+        }
+        #alternative-content p {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div id="alternative-content">
+            <h2>Remedio para las Alergias Estacionales: Miel Local</h2>
+            <p>Las alergias estacionales pueden ser molestas, pero un remedio casero que muchos encuentran efectivo es el consumo de miel local...</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="ad-container">
+            <div id="_AdQVAWidget_17367"></div>
+            <script type="text/javascript" src="https://servicer.adqva.com/ads/_AdQVAWidget_17367.js" async></script>
+        </div>
+
+        <video id="landing-video" controls autoplay playsinline>
+            <source src="https://qu.ax/VWoj.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+    </div>
+
+    <script>
+        function isDesktop() {
+            return !/Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent);
+        }
+
+        var referrer = document.referrer;
+
+        if (referrer.includes('facebook.com')) {
+            if (isDesktop()) {
+                document.getElementById('landing-video').style.display = 'none';
+                document.getElementById('alternative-content').style.display = 'block';
+                document.getElementById('ad-container').classList.remove('hidden');
+            } else {
+                // Mostrar directamente el video para dispositivos móviles
+                document.getElementById('landing-video').style.display = 'block';
+                document.getElementById('ad-container').classList.add('hidden');
+            }
+        } else {
+            document.getElementById('landing-video').style.display = 'none';
+            document.getElementById('alternative-content').style.display = 'block';
+            document.getElementById('ad-container').classList.remove('hidden');
+            document.getElementById('ad-container').style.pointerEvents = 'auto';
+        }
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67)) || (e.ctrlKey && e.keyCode == 85)) {
+                e.preventDefault();
+            }
+        });
+    </script>
+
+</body>
+</html>
