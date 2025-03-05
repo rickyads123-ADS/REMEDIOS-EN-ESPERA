@@ -1,91 +1,97 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plataforma Piramidal</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Mundial</title>
+    <style>
+        /* Estilos Básicos para la Página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
 
-    .pyramid {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
 
-    .level {
-      text-align: center;
-      margin: 10px;
-      padding: 15px;
-      background-color: #4CAF50;
-      color: white;
-      border-radius: 10px;
-      width: 80%;
-      max-width: 300px;
-      cursor: pointer;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    }
+        h1 {
+            margin: 0;
+        }
 
-    .level:hover {
-      background-color: #45a049;
-    }
+        section#partidos {
+            padding: 20px;
+            text-align: center;
+        }
 
-    .level-description {
-      display: none;
-      margin-top: 10px;
-      background-color: #f9f9f9;
-      color: #333;
-      padding: 10px;
-      border-radius: 5px;
-    }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
 
-  </style>
+        button:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Bienvenido a la Plataforma Mundial</h1>
+    </header>
 
-  <div class="pyramid">
-    <div class="level" onclick="toggleDescription('level1')">
-      <h2>Meta Principal</h2>
-      <div class="level-description" id="level1">
-        <p>Descripción de la meta principal. Aquí van los grandes objetivos.</p>
-      </div>
-    </div>
+    <section id="partidos">
+        <h2>Partidos en Vivo</h2>
+        <button id="ver-partido-btn">Ver Partido</button>
+        <ul id="lista-partidos"></ul> <!-- Lista de partidos -->
+    </section>
 
-    <div class="level" onclick="toggleDescription('level2')">
-      <h2>Submeta 1</h2>
-      <div class="level-description" id="level2">
-        <p>Descripción de la primera submeta, tareas específicas a realizar.</p>
-      </div>
-    </div>
+    <footer>
+        <p>© 2025 Plataforma Mundial</p>
+    </footer>
 
-    <div class="level" onclick="toggleDescription('level3')">
-      <h2>Submeta 2</h2>
-      <div class="level-description" id="level3">
-        <p>Descripción de la segunda submeta, más tareas y detalles.</p>
-      </div>
-    </div>
-  </div>
+    <script>
+        // Array de partidos simulados
+        const partidos = [
+            { equipo1: 'Equipo A', equipo2: 'Equipo B', hora: '10:00 AM' },
+            { equipo1: 'Equipo C', equipo2: 'Equipo D', hora: '1:00 PM' },
+            { equipo1: 'Equipo E', equipo2: 'Equipo F', hora: '3:00 PM' }
+        ];
 
-  <script>
-    function toggleDescription(level) {
-      var description = document.getElementById(level);
-      if (description.style.display === "block") {
-        description.style.display = "none";
-      } else {
-        description.style.display = "block";
-      }
-    }
-  </script>
+        // Función para cargar los partidos
+        function cargarPartidos() {
+            const listaPartidos = document.getElementById('lista-partidos');
+            listaPartidos.innerHTML = ''; // Limpiar la lista antes de agregar nuevos elementos
 
+            partidos.forEach(partido => {
+                const item = document.createElement('li');
+                item.textContent = `${partido.equipo1} vs ${partido.equipo2} - ${partido.hora}`;
+                listaPartidos.appendChild(item);
+            });
+        }
+
+        // Evento para el botón que carga los partidos
+        document.getElementById('ver-partido-btn').addEventListener('click', cargarPartidos);
+    </script>
 </body>
 </html>
